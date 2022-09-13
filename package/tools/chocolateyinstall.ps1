@@ -195,6 +195,10 @@ else {
    }
    $MUIexePath = Get-ChocolateyWebFile @DownloadArgs
 
+   if ($PackageParameters.InstallationLocation) {
+      $option += ' TARGETDIR="' + $PackageParameters.InstallationLocation + '"'
+   }
+
    $packageArgsEXE = @{
       packageName    = "$env:ChocolateyPackageName (installer)"
       fileType       = 'EXE'
